@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>內部管理系統 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { margin: 0; font-family: 'Noto Sans TC', sans-serif; background: #f4f7f9; }
+        .login-box { height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .card { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        .btn-discord { background: #5865F2; color: white; border: none; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div id="login-section" class="login-box">
+        <div class="card">
+            <i class="fa-solid fa-building-shield" style="font-size: 50px; color: #073763;"></i>
+            <h2>機關內部登入</h2>
+            <p>請使用授權之 Discord 帳號登入</p>
+            <button class="btn-discord" onclick="login()">使用 Discord 登入</button>
+            <p id="msg" style="color: red; margin-top: 10px;"></p>
+        </div>
+    </div>
+
+    <div id="admin-content" style="display:none; height: 100vh;">
+        <div style="background:#073763; color:white; padding:10px 20px; display:flex; justify-content:space-between;">
+            <span>⚖️ 案件管理後台</span>
+            <span id="user-info"></span>
+        </div>
+        <iframe src="你的試算表連結" width="100%" height="95%" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        const CLIENT_ID = '1503713998325944462';
+        const ADMIN_ID = '1026469806494453791';
+
+        function login() {
+            const redirect = encodeURIComponent(window.location.origin + '/admin');
+            window.location.href = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirect}&response_type=token&scope=identify`;
+        }
+
+        window.onload = () => {
+            const hash = new URLSearchParams(window.location.hash.slice(1));
+            const token = hash.get('access_token');
+            if (token) {
+                fetch('https://discord.com/api/users/@me', { headers: { authorization: `Bearer ${token}` } })
+                .then(r => r.json())
+                .then(user => {
+                    if (user.id === ADMIN_ID) {
+                        document.getElementById('login-section').style.display = 'none';
+                        document.getElementById('admin-content').style.display = 'block';
+                        document.getElementById('user-display').innerText = user.username;
+                    } else {
+                        document.getElementById('msg').innerText = "權限不足，拒絕訪問。";
+                    }
+                });
+            }
+        };
+    </script>
+</body>
+</html>
