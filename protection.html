@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>司法保護 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background: linear-gradient(135deg,var(--primary-dark) 0%,var(--primary-color) 100%); color:white; padding:50px 0; margin-bottom:50px; }
+        .page-header h1 { font-size:2.2rem; }
+        .section-block { margin-bottom:55px; }
+        .section-title { display:flex; align-items:center; gap:12px; font-size:1.5rem; font-weight:700; color:var(--primary-dark); border-left:5px solid var(--primary-color); padding-left:15px; margin-bottom:20px; }
+        .section-title i { color:var(--primary-color); }
+        .section-desc { color:var(--text-muted); margin-bottom:20px; line-height:1.7; padding-left:20px; }
+        .sub-list { background:white; border-radius:var(--radius-md); box-shadow:var(--shadow-sm); overflow:hidden; }
+        .sub-item { display:flex; align-items:center; padding:16px 25px; border-bottom:1px solid var(--bg-gray); text-decoration:none; color:var(--text-main); gap:12px; transition:background 0.2s, padding-left 0.2s; }
+        .sub-item:last-child { border-bottom:none; }
+        .sub-item:hover { background:var(--bg-light); padding-left:32px; color:var(--primary-color); }
+        .sub-item i { color:var(--primary-color); width:18px; flex-shrink:0; }
+        .sub-item .item-label { flex:1; font-size:1rem; }
+        .sub-item .item-tag { font-size:0.78rem; padding:2px 8px; border-radius:20px; background:var(--bg-gray); color:var(--text-muted); white-space:nowrap; }
+        .info-box { background:#eff6ff; border-left:4px solid var(--primary-color); padding:20px 25px; border-radius:0 var(--radius-md) var(--radius-md) 0; margin-bottom:20px; }
+        .info-box p { color:#1e40af; font-size:0.95rem; line-height:1.7; }
+        .btn-external { display:inline-flex; align-items:center; gap:8px; background:var(--primary-color); color:white; padding:12px 25px; border-radius:30px; text-decoration:none; font-weight:600; transition:background 0.2s, transform 0.2s; margin-top:15px; }
+        .btn-external:hover { background:var(--primary-dark); transform:translateY(-2px); }
+    </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-links">
+                <a href="index.html">回首頁</a>
+                <a href="content.html?page=sitemap">網站導覽</a>
+                <a href="contact.html">檢察長信箱</a>
+            </div>
+            <div class="font-size-controls">
+                <span>字體大小：</span>
+                <button class="font-btn" data-size="small">A-</button>
+                <button class="font-btn active" data-size="medium">A</button>
+                <button class="font-btn" data-size="large">A+</button>
+            </div>
+        </div>
+    </div>
+    <div class="nav-container container">
+        <a href="index.html" class="logo">
+            <div class="logo-img-placeholder"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div class="logo-text">
+                <h1>臺灣臺島地方檢察署</h1>
+                <p>Taiwan Taidao District Prosecutors Office</p>
+            </div>
+        </a>
+        <nav class="main-nav">
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="organization.html">簡介 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html?page=business">檢察業務簡介</a></li>
+                        <li><a href="content.html?page=chief">檢察長介紹</a></li>
+                        <li><a href="content.html?page=history">歷史沿革</a></li>
+                        <li><a href="organization.html">機關組織與人員名冊</a></li>
+                    </ul>
+                </li>
+                <li><a href="guide.html">民眾導覽</a></li>
+                <li class="dropdown">
+                    <a href="content.html?page=service">為民服務 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html?page=service_center">為民服務中心</a></li>
+                        <li><a href="content.html?page=online">線上申辦服務</a></li>
+                        <li><a href="court_status.html">開庭進度查詢</a></li>
+                        <li><a href="content.html?page=survey">問卷調查</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="list.html?type=info">資訊公開 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="list.html?type=news">新聞稿及澄清專區</a></li>
+                        <li><a href="list.html?type=board">電子公布欄</a></li>
+                        <li><a href="list.html?type=notice">公示送達</a></li>
+                        <li><a href="list.html?type=auction">查扣物拍賣專區</a></li>
+                        <li><a href="info-service.html">資訊服務</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="content.html?page=counseling">訴訟輔導 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html?page=counseling_detail">訴訟程序介紹及輔導</a></li>
+                        <li><a href="list.html?type=downloads">書狀例稿下載</a></li>
+                        <li><a href="content.html?page=faq">常見問題</a></li>
+                    </ul>
+                </li>
+                <li><a href="protection.html" style="color:var(--primary-color);">司法保護</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" id="headerSearch" placeholder="全站搜尋..." aria-label="全站搜尋">
+                <button aria-label="搜尋" onclick="const v=document.getElementById('headerSearch').value;if(v)window.location.href='search.html?q='+encodeURIComponent(v);"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+    <div class="page-header">
+        <div class="container">
+            <h1>司法保護</h1>
+            <p style="opacity:.85;margin-top:8px;">Judicial Protection — 提供完整的司法保護服務，保障當事人與被害人之合法權益</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- 緩起訴處分專區 -->
+        <div class="section-block" id="deferred">
+            <div class="section-title"><i class="fa-solid fa-file-signature"></i>緩起訴處分專區</div>
+            <div class="info-box">
+                <p>緩起訴處分係檢察官對被告依法暫緩提起公訴，並命其履行一定條件之處分制度。如有疑問，請洽本署執行科。</p>
+            </div>
+            <div class="sub-list">
+                <a href="https://www.tcc.moj.gov.tw/295804/737504/737506/295898/Nodelist" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                    <span class="item-label">緩起訴處分金申請流程及公告</span>
+                    <span class="item-tag">外部連結</span>
+                </a>
+                <a href="protection-content.html?page=deferred_flow" class="sub-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="item-label">緩起訴處分及義務勞務執行流程</span>
+                    <span class="item-tag">流程說明</span>
+                </a>
+                <a href="protection-content.html?page=drug_treatment" class="sub-item">
+                    <i class="fa-solid fa-pills"></i>
+                    <span class="item-label">毒品戒癮治療專區</span>
+                    <span class="item-tag">衛生醫療</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 修復式司法專區 -->
+        <div class="section-block" id="restorative">
+            <div class="section-title"><i class="fa-solid fa-hands-holding-circle"></i>修復式司法專區</div>
+            <div class="info-box">
+                <p>修復式司法係指在專業促進者的協助下，讓加害人與被害人進行對話，共同商討解決方案，以促進社會和諧與療癒。</p>
+            </div>
+            <div class="sub-list">
+                <a href="protection-content.html?page=restorative_intro" class="sub-item">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span class="item-label">何謂修復式司法</span>
+                    <span class="item-tag">理念介紹</span>
+                </a>
+                <a href="https://www.tcc.moj.gov.tw/295804/737504/737507/295894/Lpsimplelist" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span class="item-label">最新消息</span>
+                    <span class="item-tag">公告</span>
+                </a>
+                <a href="https://www.tcc.moj.gov.tw/295804/737504/737507/295895/717560/post" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    <span class="item-label">相關表單下載</span>
+                    <span class="item-tag">表單</span>
+                </a>
+                <a href="https://www.tcc.moj.gov.tw/295804/737504/737507/295896/Lpsimplelist" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <span class="item-label">分享專區</span>
+                    <span class="item-tag">案例故事</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 社會勞動專區 -->
+        <div class="section-block" id="community">
+            <div class="section-title"><i class="fa-solid fa-person-digging"></i>社會勞動專區</div>
+            <div class="info-box">
+                <p>易服社會勞動制度係指受判決人在符合條件之情況下，以服勞動取代入監服刑之制度，由本署執行科統籌辦理。</p>
+            </div>
+            <div class="sub-list">
+                <a href="protection-content.html?page=community_labor" class="sub-item">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span class="item-label">社會勞動制度說明</span>
+                    <span class="item-tag">制度介紹</span>
+                </a>
+                <a href="protection-content.html?page=community_flow" class="sub-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span class="item-label">易服社會勞動案件執行流程圖</span>
+                    <span class="item-tag">流程圖</span>
+                </a>
+                <a href="https://www.tcc.moj.gov.tw/295804/737504/737509/1248295/1360536/post" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-building-user"></i>
+                    <span class="item-label">遴聘社會勞動機構相關事宜公告</span>
+                    <span class="item-tag">機構公告</span>
+                </a>
+                <a href="https://www.tcc.moj.gov.tw/295804/737504/737509/295935/Lpsimplelist" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-newspaper"></i>
+                    <span class="item-label">訊息公告</span>
+                    <span class="item-tag">最新公告</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 被害人刑事訴訟資訊獲知平台 -->
+        <div class="section-block" id="victim">
+            <div class="section-title"><i class="fa-solid fa-tower-broadcast"></i>被害人刑事訴訟資訊獲知平台</div>
+            <div class="info-box">
+                <p>依《犯罪被害人權益保障法》，被害人有權知悉案件訴訟進度。本平台提供單一窗口，讓被害人即時獲取偵查、起訴、審判等各階段資訊。</p>
+            </div>
+            <div class="sub-list">
+                <a href="protection-content.html?page=victim_platform" class="sub-item">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span class="item-label">平台簡介與服務說明</span>
+                    <span class="item-tag">說明文件</span>
+                </a>
+                <a href="https://naps.moj.gov.tw/" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span class="item-label">進入法務部「被害人刑事訴訟資訊獲知」平台</span>
+                    <span class="item-tag">官方平台</span>
+                </a>
+                <a href="https://www.avs.org.tw/" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <span class="item-label">犯罪被害人保護協會</span>
+                    <span class="item-tag">協助資源</span>
+                </a>
+                <a href="https://www.after-care.org.tw/" target="_blank" class="sub-item">
+                    <i class="fa-solid fa-hands-holding-heart"></i>
+                    <span class="item-label">財團法人臺灣更生保護會</span>
+                    <span class="item-tag">更生資源</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

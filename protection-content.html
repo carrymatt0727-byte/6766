@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>司法保護 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header{background:linear-gradient(135deg,var(--primary-dark),var(--primary-color));color:#fff;padding:45px 0;margin-bottom:40px}
+        .page-header h1{font-size:2rem}
+        .page-header .breadcrumb{font-size:.9rem;opacity:.75;margin-bottom:8px}
+        .page-header .breadcrumb a{color:rgba(255,255,255,.85);text-decoration:none}
+        .content-body{max-width:860px;margin:0 auto 60px;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:40px}
+        .content-body h2{font-size:1.5rem;color:var(--primary-dark);border-left:5px solid var(--primary-color);padding-left:14px;margin:30px 0 15px}
+        .content-body h2:first-child{margin-top:0}
+        .content-body p{line-height:1.85;color:#444;margin-bottom:14px}
+        .content-body ul{padding-left:22px;margin-bottom:16px}
+        .content-body li{line-height:1.8;margin-bottom:6px;color:#444}
+        .info-box{background:#eff6ff;border-left:4px solid var(--primary-color);padding:18px 22px;border-radius:0 8px 8px 0;margin:20px 0}
+        .info-box p{color:#1e40af;margin:0}
+        .step-list{counter-reset:step;list-style:none;padding:0}
+        .step-list li{display:flex;gap:16px;margin-bottom:20px;align-items:flex-start}
+        .step-list li::before{counter-increment:step;content:counter(step);background:var(--primary-color);color:#fff;border-radius:50%;min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+        .step-content strong{display:block;font-size:1rem;color:var(--primary-dark);margin-bottom:4px}
+        .step-content span{font-size:.9rem;color:#666}
+        .flow-diagram{display:flex;flex-direction:column;align-items:center;gap:0;margin:25px 0}
+        .flow-box{background:var(--bg-light);border:2px solid var(--primary-color);border-radius:8px;padding:14px 30px;text-align:center;font-weight:600;color:var(--primary-dark);min-width:260px}
+        .flow-arrow{color:var(--primary-color);font-size:1.5rem;margin:4px 0}
+        .flow-note{font-size:.82rem;color:#888;text-align:center;margin-top:4px}
+        .btn-back{display:inline-flex;align-items:center;gap:8px;color:var(--primary-color);text-decoration:none;font-weight:500;margin-bottom:25px;transition:gap .2s}
+        .btn-back:hover{gap:12px}
+        .tag-list{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}
+        .tag{padding:6px 15px;border-radius:20px;font-size:.9rem;font-weight:500}
+        .tag-blue{background:#dbeafe;color:#1d4ed8}
+        .tag-green{background:#dcfce7;color:#166534}
+        .tag-orange{background:#ffedd5;color:#c2410c}
+    </style>
+</head>
+<body>
+<header class="main-header">
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-links">
+                <a href="index.html">回首頁</a>
+                <a href="contact.html">檢察長信箱</a>
+            </div>
+            <div class="font-size-controls">
+                <span>字體大小：</span>
+                <button class="font-btn" data-size="small">A-</button>
+                <button class="font-btn active" data-size="medium">A</button>
+                <button class="font-btn" data-size="large">A+</button>
+            </div>
+        </div>
+    </div>
+    <div class="nav-container container">
+        <a href="index.html" class="logo">
+            <div class="logo-img-placeholder"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div class="logo-text">
+                <h1>臺灣臺島地方檢察署</h1>
+                <p>Taiwan Taidao District Prosecutors Office</p>
+            </div>
+        </a>
+        <nav class="main-nav">
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="organization.html">簡介 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html?page=business">檢察業務簡介</a></li>
+                        <li><a href="content.html?page=chief">檢察長介紹</a></li>
+                        <li><a href="organization.html">機關組織與人員名冊</a></li>
+                    </ul>
+                </li>
+                <li><a href="guide.html">民眾導覽</a></li>
+                <li class="dropdown">
+                    <a href="content.html?page=service">為民服務 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content.html?page=service_center">為民服務中心</a></li>
+                        <li><a href="court_status.html">開庭進度查詢</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="list.html?type=info">資訊公開 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="list.html?type=notice">公示送達</a></li>
+                        <li><a href="list.html?type=auction">查扣物拍賣專區</a></li>
+                        <li><a href="info-service.html">資訊服務</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="content.html?page=counseling">訴訟輔導 <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="list.html?type=downloads">書狀例稿下載</a></li>
+                        <li><a href="content.html?page=faq">常見問題</a></li>
+                    </ul>
+                </li>
+                <li><a href="protection.html" style="color:var(--primary-color);">司法保護</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" id="headerSearch" placeholder="全站搜尋..." aria-label="全站搜尋">
+                <button aria-label="搜尋" onclick="const v=document.getElementById('headerSearch').value;if(v)window.location.href='search.html?q='+encodeURIComponent(v);"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+    <div class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">首頁</a> › <a href="protection.html">司法保護</a> › <span id="bcTitle"></span>
+            </div>
+            <h1 id="pageTitle">載入中...</h1>
+        </div>
+    </div>
+    <div class="container">
+        <a href="protection.html" class="btn-back"><i class="fa-solid fa-angle-left"></i> 返回司法保護</a>
+        <div class="content-body" id="mainContent"></div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script>
+const pages = {
+    deferred_flow: {
+        title: '緩起訴處分及義務勞務執行流程',
+        html: `
+            <h2>緩起訴處分義務勞務流程說明</h2>
+            <div class="info-box"><p>緩起訴處分係檢察官考量犯罪情節輕微，依法暫緩提起公訴，並命被告於一定期間內履行義務勞務等條件。</p></div>
+            <h2>義務勞務執行流程</h2>
+            <ol class="step-list">
+                <li><div class="step-content"><strong>接獲緩起訴處分</strong><span>由本署執行科寄發緩起訴書，告知執行條件與期間。</span></div></li>
+                <li><div class="step-content"><strong>選定勞動機構</strong><span>配合本署提供之合法機構清單，選擇服務單位並填具申請書。</span></div></li>
+                <li><div class="step-content"><strong>報到執行</strong><span>依指定日期至選定機構報到，開始履行義務勞務。執行時數由機構登記。</span></div></li>
+                <li><div class="step-content"><strong>定期回報</strong><span>機構每月將執行紀錄回報本署執行科，由本署追蹤執行進度。</span></div></li>
+                <li><div class="step-content"><strong>執行完畢</strong><span>完成全部時數後，本署核發「緩起訴處分執行完畢證明書」。</span></div></li>
+            </ol>
+            <h2>注意事項</h2>
+            <ul>
+                <li>義務勞務應於緩起訴期間內完成，逾期將可能導致撤銷緩起訴。</li>
+                <li>執行期間如有特殊情形，請主動聯繫本署執行科說明。</li>
+                <li>義務勞務執行時數依各案處分書所載為準。</li>
+            </ul>`
+    },
+    drug_treatment: {
+        title: '毒品戒癮治療專區',
+        html: `
+            <h2>毒品戒癮治療制度說明</h2>
+            <div class="info-box"><p>依毒品危害防制條例，經緩起訴之施用毒品被告，得命其接受戒癮治療，以醫療手段協助回歸正常生活。</p></div>
+            <h2>適用對象</h2>
+            <ul>
+                <li>施用第一級或第二級毒品，經檢察官為緩起訴處分者。</li>
+                <li>同意接受戒癮治療，並於處分書所示期間內完成治療療程。</li>
+            </ul>
+            <h2>治療流程</h2>
+            <ol class="step-list">
+                <li><div class="step-content"><strong>評估與轉介</strong><span>由本署執行科轉介至合作醫療機構，進行初步藥物濫用評估。</span></div></li>
+                <li><div class="step-content"><strong>擬定治療計畫</strong><span>醫師依評估結果擬定個人化治療計畫，包含藥物替代療法或心理諮商。</span></div></li>
+                <li><div class="step-content"><strong>定期回診</strong><span>依療程規律回診，並配合尿液篩檢，醫療機構定期向本署回報。</span></div></li>
+                <li><div class="step-content"><strong>治療完成</strong><span>療程完成後，醫療機構開具完成證明，由本署執行科存查並結案。</span></div></li>
+            </ol>
+            <h2>相關資源</h2>
+            <div class="tag-list">
+                <span class="tag tag-blue">衛生福利部毒品防制署</span>
+                <span class="tag tag-green">各縣市毒品危害防制中心</span>
+                <span class="tag tag-orange">安心專線 1925</span>
+            </div>
+            <p>如需查詢合作醫療機構名單，請洽本署執行科，電話請參閱<a href="organization.html" style="color:var(--primary-color);">機關組織</a>頁面。</p>`
+    },
+    restorative_intro: {
+        title: '何謂修復式司法',
+        html: `
+            <h2>修復式司法的理念</h2>
+            <p>修復式司法（Restorative Justice）是一種以「人」為中心的衝突解決方式。它強調讓受犯罪行為影響的人——特別是被害人、加害人及社區——共同參與，討論犯罪所帶來的傷害，並尋求修復之道。</p>
+            <div class="info-box"><p>修復式司法並非取代傳統司法，而是作為補充機制，讓司法程序更具人性溫度。</p></div>
+            <h2>核心精神</h2>
+            <ul>
+                <li><strong>修復傷害：</strong>聚焦於犯罪造成的傷害，而非單純的懲罰。</li>
+                <li><strong>責任承擔：</strong>鼓勵加害人直面自己行為的後果，主動承擔責任。</li>
+                <li><strong>被害人賦權：</strong>讓被害人有機會表達感受、提出需求，並參與解決過程。</li>
+                <li><strong>社區參與：</strong>透過社區支持，協助雙方重建關係與信任。</li>
+            </ul>
+            <h2>適用案件類型</h2>
+            <div class="tag-list">
+                <span class="tag tag-blue">財產犯罪</span>
+                <span class="tag tag-green">傷害案件</span>
+                <span class="tag tag-orange">家庭暴力（經評估適合者）</span>
+                <span class="tag tag-blue">鄰里糾紛</span>
+                <span class="tag tag-green">少年事件</span>
+            </div>
+            <h2>修復會談程序</h2>
+            <ol class="step-list">
+                <li><div class="step-content"><strong>案件轉介</strong><span>由檢察官或法官評估案件適合性後，轉介至本署修復式司法促進者。</span></div></li>
+                <li><div class="step-content"><strong>分別會談</strong><span>促進者分別與被害人及加害人進行前置準備會談，確認雙方意願。</span></div></li>
+                <li><div class="step-content"><strong>修復會議</strong><span>雙方在促進者主持下面對面對話，共同討論傷害與修復方案。</span></div></li>
+                <li><div class="step-content"><strong>達成協議</strong><span>訂立修復協議書，明確記載雙方同意之修復事項。</span></div></li>
+                <li><div class="step-content"><strong>追蹤落實</strong><span>促進者定期追蹤協議履行情況，確保修復成效。</span></div></li>
+            </ol>`
+    },
+    community_labor: {
+        title: '社會勞動制度說明',
+        html: `
+            <h2>制度背景</h2>
+            <p>易服社會勞動制度係依刑法第41條及第42條之1規定，受六個月以下有期徒刑或拘役宣告者，在符合條件下，得以「一日換兩小時」的方式，至指定機構服社會勞動，替代入監服刑。</p>
+            <div class="info-box"><p>社會勞動制度旨在維繫受刑人之社會連結，避免短期自由刑的標籤化效應，同時貢獻社會公益。</p></div>
+            <h2>申請資格</h2>
+            <ul>
+                <li>宣告六個月以下有期徒刑或拘役。</li>
+                <li>非因故意犯罪受本刑逾六個月有期徒刑宣告者。</li>
+                <li>經審查無礙社會秩序，且確有社會勞動之能力者。</li>
+            </ul>
+            <h2>折算標準</h2>
+            <ul>
+                <li>有期徒刑或拘役：<strong>每日以勞動二小時折算</strong>。</li>
+                <li>易服社會勞動之履行期間，不得逾一年六個月。</li>
+            </ul>
+            <h2>申請程序</h2>
+            <ol class="step-list">
+                <li><div class="step-content"><strong>提出申請</strong><span>向本署執行科提出「聲請易服社會勞動聲請狀」，並檢附相關文件。</span></div></li>
+                <li><div class="step-content"><strong>資格審查</strong><span>本署審查是否符合資格條件，並評估適合之勞動機構。</span></div></li>
+                <li><div class="step-content"><strong>指定機構</strong><span>核准後，指定服務機構及開始日期，並通知申請人報到。</span></div></li>
+                <li><div class="step-content"><strong>執行勞動</strong><span>至指定機構報到執行，機構主管負責考核出缺勤與工作紀錄。</span></div></li>
+                <li><div class="step-content"><strong>執行完畢</strong><span>完成全部時數，本署核發執行完畢證明書。</span></div></li>
+            </ol>`
+    },
+    community_flow: {
+        title: '易服社會勞動案件執行流程圖',
+        html: `
+            <h2>執行流程圖</h2>
+            <div class="flow-diagram">
+                <div class="flow-box">提出易服社會勞動聲請</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-box">本署執行科受理審查</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-box">核准 → 指定勞動機構與時間</div>
+                <div class="flow-note">不符資格 → 通知駁回，須入監執行</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-box">至機構報到，開始執行勞動</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-box">機構每月回報執行紀錄</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-box">本署執行科追蹤進度</div>
+                <div class="flow-note">如中途違規或無故缺勤 → 廢止易服，命入監執行</div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="flow-box" style="border-color:var(--tag-green);color:var(--tag-green)">執行完畢 → 核發完畢證明</div>
+            </div>
+            <h2>重要注意事項</h2>
+            <ul>
+                <li>請務必依指定日期與時段報到，無故缺勤三次以上將廢止易服資格。</li>
+                <li>執行期間如有特殊情形（如生病、工作衝突），請提前向本署執行科申請。</li>
+                <li>勞動時數以機構實際記錄為準，私下抵銷無效。</li>
+                <li>請攜帶本署核發之報到單至機構報到，並請機構主管確認簽署。</li>
+            </ul>`
+    },
+    victim_platform: {
+        title: '被害人刑事訴訟資訊獲知平台簡介',
+        html: `
+            <h2>平台建置目的</h2>
+            <p>依《犯罪被害人權益保障法》及司法院、法務部共同推動，「被害人刑事訴訟資訊獲知平台」提供犯罪被害人或其家屬，透過單一窗口即時查詢案件在偵查、起訴、審判各階段之進度資訊。</p>
+            <div class="info-box"><p>本平台由法務部統一建置營運，臺灣各地方檢察署均已完成串接，被害人可直接於平台上線申請帳號使用。</p></div>
+            <h2>平台提供之服務</h2>
+            <ul>
+                <li>案件偵查進度查詢（含偵結結果通知）。</li>
+                <li>起訴後法院審判期日通知。</li>
+                <li>判決結果及確定情形通知。</li>
+                <li>執行情形之必要資訊。</li>
+            </ul>
+            <h2>申請資格</h2>
+            <ul>
+                <li>犯罪案件之直接被害人。</li>
+                <li>被害人死亡時，其配偶、子女、父母或兄弟姊妹。</li>
+                <li>告訴人（需為具告訴資格者）。</li>
+            </ul>
+            <h2>如何使用</h2>
+            <ol class="step-list">
+                <li><div class="step-content"><strong>前往平台官網</strong><span>請點選下方連結前往法務部「被害人刑事訴訟資訊獲知平台」。</span></div></li>
+                <li><div class="step-content"><strong>線上申請帳號</strong><span>備妥身份證件，完成身份驗證後申請帳號。</span></div></li>
+                <li><div class="step-content"><strong>填寫案件資訊</strong><span>輸入案件字號或相關資訊，系統即自動比對並串接相關案件。</span></div></li>
+                <li><div class="step-content"><strong>接收通知</strong><span>後續案件有進度更新時，平台將主動以電子郵件或簡訊通知。</span></div></li>
+            </ol>
+            <p style="margin-top:25px;">
+                <a href="https://naps.moj.gov.tw/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--primary-color);color:white;padding:12px 25px;border-radius:30px;text-decoration:none;font-weight:600;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> 前往法務部資訊獲知平台
+                </a>
+            </p>`
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const p = new URLSearchParams(location.search).get('page') || '';
+    const data = pages[p];
+    if (!data) { location.href = 'protection.html'; return; }
+    document.title = data.title + ' - 臺灣臺島地方檢察署';
+    document.getElementById('pageTitle').textContent = data.title;
+    document.getElementById('bcTitle').textContent = data.title;
+    document.getElementById('mainContent').innerHTML = data.html;
+});
+</script>
+</body>
+</html>

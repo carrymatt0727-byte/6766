@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>頁面內容 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--primary-dark); color: white; padding: 40px 0; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2rem; }
+        .content-container { max-width: 900px; margin: 0 auto 60px; background: var(--bg-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 40px; line-height: 1.8; }
+        .content-container h2 { color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 10px; margin: 30px 0 20px; }
+        .breadcrumb { margin-bottom: 20px; color: var(--text-muted); font-size: 0.9rem; }
+        .breadcrumb a { color: var(--primary-color); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <div class="logo-img-placeholder"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="logo-text">
+                    <h1>臺灣臺島地方檢察署</h1>
+                    <p>Taiwan Taidao District Prosecutors Office</p>
+                </div>
+            </a>
+            <div class="search-box">
+                <input type="text" placeholder="全站搜尋..." aria-label="全站搜尋">
+                <button aria-label="搜尋"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="page-header">
+            <div class="container">
+                <h1 id="pageTitle">載入中...</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content-container">
+                <div class="breadcrumb">
+                    <a href="index.html"><i class="fa-solid fa-home"></i> 首頁</a> &gt; <span id="bcText">內容</span>
+                </div>
+                <div id="pageContent">
+                    <p>資料載入中，請稍候...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const pageId = params.get('page');
+            
+            const titleEl = document.getElementById('pageTitle');
+            const contentEl = document.getElementById('pageContent');
+            const bcEl = document.getElementById('bcText');
+            
+            const pages = {
+                'intro': { title: '機關簡介', content: '<h2>臺島地檢署簡介</h2><p>本署負責大臺島地區之刑事案件偵查、公訴及執行業務，秉持客觀、公正、獨立的原則，致力於維護社會治安與保障人權。</p>' },
+                'business': { title: '檢察業務簡介', content: '<h2>業務說明</h2><p>檢察官代表國家行使追訴權，主要業務包含：實施偵查、提起公訴、實行公訴、協助自訴、擔當自訴及指揮刑事裁判之執行等。</p>' },
+                'chief': { title: '檢察長介紹', content: '<h2>檢察長致辭</h2><p>歡迎來到臺島地方檢察署。我們將以「專業、效能、便民、透明」為核心價值，持續優化各項司法服務。</p>' },
+                'service_center': { title: '為民服務中心', content: '<h2>服務項目</h2><p>本署一樓設有為民服務中心，提供單一窗口服務，包括：收狀、收費、發還保證金、訴訟輔導等便民措施。</p>' },
+                'online': { title: '線上申辦', content: '<h2>線上申辦系統</h2><p>提供線上聲請補發傳票、聲請發還保證金、線上預約視訊諮詢等服務。（系統建置示範頁）</p>' },
+                'citizen_judge': { title: '國民法官專區', content: '<h2>國民法官法</h2><p>讓來自各行各業的國民與法官一起坐在法檯上，共同審判重大刑事案件，使司法更透明，更貼近社會多元價值。</p>' },
+                'counseling': { title: '訴訟輔導', content: '<h2>訴訟輔導服務</h2><p>針對民眾面臨的司法程序疑難，提供免費的非實體法律諮詢與程序引導，幫助您了解自身權益。</p>' },
+                'protection': { title: '司法保護', content: '<h2>司法保護專區</h2><p>包含犯罪被害人保護、更生保護、緩起訴處分金運用及社會勞動制度等相關資訊與資源。</p>' }
+            };
+
+            const data = pages[pageId] || { title: '網頁建置中', content: '<p>您所查詢的頁面目前正在建置中，或為動態內容示範頁，請稍後再試。</p>' };
+            
+            titleEl.textContent = data.title;
+            bcEl.textContent = data.title;
+            contentEl.innerHTML = data.content;
+            document.title = data.title + ' - 臺灣臺島地方檢察署';
+        });
+    </script>
+</body>
+</html>

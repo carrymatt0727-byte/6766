@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜尋結果 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--primary-dark); color: white; padding: 40px 0; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2rem; }
+        .search-results { max-width: 900px; margin: 0 auto 60px; }
+        .result-item { background: var(--bg-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 25px; margin-bottom: 20px; border-left: 4px solid var(--primary-color); }
+        .result-title { font-size: 1.25rem; margin-bottom: 10px; }
+        .result-title a { color: var(--primary-dark); text-decoration: none; }
+        .result-title a:hover { color: var(--primary-color); text-decoration: underline; }
+        .result-desc { color: var(--text-secondary); font-size: 0.95rem; }
+        .highlight { background-color: #fff3cd; font-weight: bold; padding: 0 3px; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container top-bar-inner">
+                <div class="top-links">
+                    <a href="index.html">回首頁</a>
+                    <a href="content.html?page=sitemap">網站導覽</a>
+                    <a href="contact.html">檢察長信箱</a>
+                </div>
+                <div class="font-size-controls">
+                    <span>字體大小：</span>
+                    <button class="font-btn" data-size="small">A-</button>
+                    <button class="font-btn active" data-size="medium">A</button>
+                    <button class="font-btn" data-size="large">A+</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <div class="logo-img-placeholder"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="logo-text">
+                    <h1>臺灣臺島地方檢察署</h1>
+                    <p>Taiwan Taidao District Prosecutors Office</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="organization.html">簡介 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="content.html?page=service">為民服務 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="list.html?type=info">資訊公開 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="content.html?page=counseling">訴訟輔導 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li><a href="content.html?page=protection" style="display:block; padding: 10px 15px; color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 1.1rem;">司法保護</a></li>
+                </ul>
+                <div class="search-box">
+                    <input type="text" id="headerSearch" placeholder="全站搜尋..." aria-label="全站搜尋">
+                    <button aria-label="搜尋" onclick="const v = document.getElementById('headerSearch').value; if(v) window.location.href='search.html?q='+encodeURIComponent(v);"><i class="fa-solid fa-search"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>搜尋結果</h1>
+                <p id="searchStatus">正在搜尋...</p>
+            </div>
+        </div>
+
+        <div class="container search-results" id="resultsContainer">
+            <!-- Results injected here -->
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('q');
+            
+            const status = document.getElementById('searchStatus');
+            const container = document.getElementById('resultsContainer');
+            
+            if (!query) {
+                status.textContent = '請輸入搜尋關鍵字';
+                container.innerHTML = '<p style="text-align:center;">無結果。</p>';
+                return;
+            }
+
+            status.innerHTML = `為您尋找「<strong>${query}</strong>」的結果：`;
+            
+            // Mock results
+            let html = '';
+            for(let i=1; i<=3; i++) {
+                html += `
+                    <div class="result-item">
+                        <h3 class="result-title"><a href="content.html?page=detail">含有「<span class="highlight">${query}</span>」的相關網頁標題 ${i}</a></h3>
+                        <p class="result-desc">這是一段網頁摘要，其中包含了您搜尋的關鍵字 <span class="highlight">${query}</span>，我們透過全站搜尋系統將相關的業務介紹、新聞稿或公告列出，供民眾參考。</p>
+                    </div>
+                `;
+            }
+            container.innerHTML = html;
+        });
+    </script>
+</body>
+</html>

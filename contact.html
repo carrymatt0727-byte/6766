@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檢察長信箱 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--primary-dark); color: white; padding: 40px 0; margin-bottom: 40px; text-align: center; }
+        .page-header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .contact-container { max-width: 800px; margin: 0 auto 60px; background: var(--bg-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 40px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; color: var(--text-main); }
+        .required::after { content: '*'; color: var(--secondary-color); margin-left: 4px; }
+        
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 1rem; font-family: inherit; transition: border-color var(--transition); }
+        .form-control:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(11, 83, 148, 0.1); }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+        
+        .submit-btn { background-color: var(--primary-color); color: white; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: var(--radius-md); cursor: pointer; width: 100%; transition: var(--transition); margin-top: 10px; }
+        .submit-btn:hover { background-color: var(--primary-dark); box-shadow: var(--shadow-md); }
+        
+        .contact-rules { background-color: #f8f9fa; border-left: 4px solid var(--primary-light); padding: 20px; margin-bottom: 30px; border-radius: 4px; }
+        .contact-rules h3 { color: var(--primary-dark); margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; }
+        .contact-rules ul { padding-left: 20px; margin: 0; }
+        .contact-rules li { margin-bottom: 5px; color: var(--text-muted); font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <div class="logo-img-placeholder"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="logo-text">
+                    <h1>臺灣臺島地方檢察署</h1>
+                    <p>Taiwan Taidao District Prosecutors Office</p>
+                </div>
+            </a>
+            <div class="search-box">
+                <input type="text" placeholder="全站搜尋..." aria-label="全站搜尋">
+                <button aria-label="搜尋"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>檢察長信箱</h1>
+                <p>歡迎您提供寶貴意見</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="contact-container">
+                
+                <div class="contact-rules">
+                    <h3><i class="fa-solid fa-circle-info"></i> 使用說明與注意事項</h3>
+                    <ul>
+                        <li>為確保聯絡管道暢通，請填寫真實姓名與有效電子郵件。</li>
+                        <li>如有具體證據或附件，建議您直接親臨或郵寄至本署。</li>
+                        <li>惡意灌水、謾罵或不實指控，本署將依法保留追訴權。</li>
+                    </ul>
+                </div>
+
+                <!-- Web3Forms Integration -->
+                <form id="contactForm">
+                    
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="98c38860-de19-4e3e-bd27-2097dac8848e">
+                    
+                    <input type="hidden" name="subject" value="【臺島地檢署】檢察長信箱新留言">
+
+                    <div class="form-group">
+                        <label for="name" class="required">真實姓名</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="請輸入您的姓名" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="required">電子信箱</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="請輸入有效的 Email 以便回覆" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">聯絡電話 (選填)</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="請輸入您的聯絡電話">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="required">意見或陳情內容</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="請詳細描述您的意見或陳情事項..." required></textarea>
+                    </div>
+
+                    <!-- Honeypot Spam Protection -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <button type="submit" class="submit-btn" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> 確認送出信件</button>
+                    <div id="result" style="margin-top: 20px; font-weight: 500; text-align: center; display: none;"></div>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('result');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 處理中...';
+            submitBtn.disabled = true;
+            result.style.display = 'none';
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = '<i class="fa-solid fa-circle-check"></i> 您的信件已成功送出！我們會盡快處理。';
+                    result.style.color = '#0f5132';
+                    result.style.backgroundColor = '#d1e7dd';
+                    result.style.padding = '15px';
+                    result.style.borderRadius = '5px';
+                    result.style.display = 'block';
+                    form.reset();
+                } else {
+                    console.log(response);
+                    result.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> 送出失敗：' + json.message;
+                    result.style.color = '#842029';
+                    result.style.backgroundColor = '#f8d7da';
+                    result.style.padding = '15px';
+                    result.style.borderRadius = '5px';
+                    result.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> 發生錯誤，請稍後再試！';
+                result.style.color = '#842029';
+                result.style.backgroundColor = '#f8d7da';
+                result.style.padding = '15px';
+                result.style.borderRadius = '5px';
+                result.style.display = 'block';
+            })
+            .then(function() {
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> 確認送出信件';
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

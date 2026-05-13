@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>民眾導覽 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--primary-dark); color: white; padding: 40px 0; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2rem; }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .guide-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-md);
+            padding: 30px 20px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid var(--secondary-color);
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .card-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        .card-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container top-bar-inner">
+                <div class="top-links">
+                    <a href="index.html">回首頁</a>
+                    <a href="content.html?page=sitemap">網站導覽</a>
+                    <a href="contact.html">檢察長信箱</a>
+                </div>
+                <div class="font-size-controls">
+                    <span>字體大小：</span>
+                    <button class="font-btn" data-size="small">A-</button>
+                    <button class="font-btn active" data-size="medium">A</button>
+                    <button class="font-btn" data-size="large">A+</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <div class="logo-img-placeholder"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="logo-text">
+                    <h1>臺灣臺島地方檢察署</h1>
+                    <p>Taiwan Taidao District Prosecutors Office</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li class="dropdown">
+                        <a href="organization.html">簡介 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li><a href="guide.html" style="color: var(--primary-color);">民眾導覽</a></li>
+                    <li class="dropdown">
+                        <a href="content.html?page=service">為民服務 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="list.html?type=info">資訊公開 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="content.html?page=counseling">訴訟輔導 <i class="fa-solid fa-angle-down"></i></a>
+                    </li>
+                    <li><a href="protection.html">司法保護</a></li>
+                </ul>
+                <div class="search-box">
+                    <input type="text" id="headerSearch" placeholder="全站搜尋..." aria-label="全站搜尋">
+                    <button aria-label="搜尋" onclick="const v = document.getElementById('headerSearch').value; if(v) window.location.href='search.html?q='+encodeURIComponent(v);"><i class="fa-solid fa-search"></i></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>民眾導覽</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="guide-grid">
+                <a href="content.html?page=map" class="guide-card">
+                    <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div class="card-title">地圖導覽</div>
+                    <div class="card-desc">提供本署詳細交通資訊、地理位置圖、大眾運輸乘車指南與停車場資訊。</div>
+                </a>
+                
+                <a href="content.html?page=floor" class="guide-card">
+                    <div class="card-icon"><i class="fa-solid fa-building"></i></div>
+                    <div class="card-title">樓層介紹</div>
+                    <div class="card-desc">為民服務中心、法警室、各科室及其他辦公區域之樓層分布圖解。</div>
+                </a>
+                
+                <a href="list.html?type=court_layout" class="guide-card">
+                    <div class="card-icon"><i class="fa-solid fa-gavel"></i></div>
+                    <div class="card-title">偵查庭配置圖</div>
+                    <div class="card-desc">查詢本署各個偵查庭及詢問室的詳細位置，方便當事人與報到民眾尋找。</div>
+                </a>
+
+                <a href="content.html?page=wifi" class="guide-card">
+                    <div class="card-icon"><i class="fa-solid fa-wifi"></i></div>
+                    <div class="card-title">免費無線上網</div>
+                    <div class="card-desc">提供洽公民眾 iTaiwan 免費無線上網服務之連線教學與使用說明。</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

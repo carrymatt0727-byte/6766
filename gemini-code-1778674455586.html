@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上起訴系統 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header { background-color: var(--primary-dark); color: white; padding: 40px 0; text-align: center; margin-bottom: 40px; }
+        .form-container { max-width: 800px; margin: 0 auto 60px; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 40px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 8px; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-family: inherit; }
+        .submit-btn { background-color: var(--secondary-color); color: white; border: none; padding: 15px; width: 100%; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; font-size: 1.1rem; transition: var(--transition); }
+        .submit-btn:hover { background-color: #a30000; transform: translateY(-2px); }
+        #msg { margin-top: 20px; padding: 15px; border-radius: var(--radius-md); display: none; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>線上起訴/案件登記</h1>
+        <p>請詳實填寫相關資訊，本署將依職權受理</p>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <form id="reportForm">
+                <div class="form-group">
+                    <label>原告 (告訴人)</label>
+                    <input type="text" id="plaintiff" class="form-control" required placeholder="輸入姓名">
+                </div>
+                <div class="form-group">
+                    <label>被告 (嫌疑人)</label>
+                    <input type="text" id="defendant" class="form-control" required placeholder="輸入姓名或身分特徵">
+                </div>
+                <div class="form-group">
+                    <label>案由與事實詳述</label>
+                    <textarea id="description" class="form-control" rows="6" required placeholder="請描述案發經過與涉及罪名..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>證據連結 (選填)</label>
+                    <input type="url" id="evidence" class="form-control" placeholder="雲端硬碟或圖片連結">
+                </div>
+                <button type="submit" class="submit-btn" id="sBtn">確認提交起訴書</button>
+            </form>
+            <div id="msg"></div>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwBBt7AWvhIJq3ZE66ehM4ZZlR6ciUtKeo3ARdut2MZw4WlSK3wIC7QRgErwxQpf1-A/exec";
+        
+        document.getElementById('reportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('sBtn');
+            const msg = document.getElementById('msg');
+            
+            btn.disabled = true;
+            btn.innerText = "正在傳送至檢察機關...";
+
+            const payload = {
+                plaintiff: document.getElementById('plaintiff').value,
+                defendant: document.getElementById('defendant').value,
+                description: document.getElementById('description').value,
+                evidence: document.getElementById('evidence').value
+            };
+
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                msg.style.display = "block";
+                msg.style.backgroundColor = "#d1e7dd";
+                msg.innerHTML = "✅ 提交成功！案件已進入自動化審查程序。";
+                document.getElementById('reportForm').reset();
+                btn.disabled = false;
+                btn.innerText = "確認提交起訴書";
+            });
+        });
+    </script>
+</body>
+</html>

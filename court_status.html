@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開庭進度查詢 - 臺灣臺島地方檢察署</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .query-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 40px;
+        }
+        .instructions {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px 20px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: #856404;
+        }
+        .instructions ol {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+        .required::after {
+            content: '*';
+            color: var(--secondary-color);
+            margin-left: 4px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color var(--transition);
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(11, 83, 148, 0.1);
+        }
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+        .case-number-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .case-number-group input {
+            flex: 1;
+        }
+        .case-number-group select {
+            flex: 1;
+        }
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow-md);
+        }
+        /* Result styling */
+        #resultArea {
+            display: none;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        .result-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .status-active {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        .status-waiting {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="nav-container container">
+            <a href="index.html" class="logo">
+                <div class="logo-img-placeholder">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>臺灣臺島地方檢察署</h1>
+                    <p>Taiwan Taidao District Prosecutors Office</p>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="#">簡介</a></li>
+                    <li><a href="#" style="color: var(--primary-color);">為民服務</a></li>
+                    <li><a href="#">資訊公開</a></li>
+                    <li><a href="#">訴訟輔導</a></li>
+                    <li><a href="#">司法保護</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="page-header">
+            <div class="container">
+                <h1>檢察官開庭進度查詢</h1>
+                <p>所屬檢察機關檢察官開庭進度即時資訊</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="query-container">
+                <div class="instructions">
+                    <strong><i class="fa-solid fa-triangle-exclamation"></i> 注意事項與說明：</strong>
+                    <ol>
+                        <li>請務必先到法警室完成『當事人報到作業』。</li>
+                        <li>本資料僅供參考，如網路異常中斷服務，請依原開庭時間到庭。</li>
+                        <li>為節省網路資源，僅可查得今日上午或下午偵查庭開庭進度，本服務不含臨時庭。</li>
+                        <li>提醒您，本查詢系統僅需輸入與案件相關之資訊，<strong>勿輸入個人銀行帳戶、密碼或金融相關資料</strong>，以免遭詐騙。如遇可疑訊息，請撥打165反詐騙專線。</li>
+                    </ol>
+                </div>
+
+                <form id="queryForm">
+                    <div class="form-group">
+                        <label for="agency" class="required">選擇機關</label>
+                        <select id="agency" class="form-control" required>
+                            <option value="TDC">臺灣臺島地方檢察署</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="required">輸入案號</label>
+                        <div class="case-number-group">
+                            <input type="number" id="year" class="form-control" placeholder="年度 (如: 113)" required>
+                            <span>年</span>
+                            <input type="text" id="word" class="form-control" placeholder="字別 (如: 偵)" required>
+                            <span>字第</span>
+                            <input type="number" id="number" class="form-control" placeholder="號" required>
+                            <span>號</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sequence" class="required">傳票上之開庭進度查詢序號</label>
+                        <input type="text" id="sequence" class="form-control" placeholder="請輸入序號 (如: A1234)" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn"><i class="fa-solid fa-magnifying-glass"></i> 開始查詢</button>
+                </form>
+
+                <div id="resultArea">
+                    <h3 style="margin-bottom: 20px; color: var(--primary-dark);">查詢結果</h3>
+                    <div class="result-card">
+                        <div class="status-badge status-active" id="resultStatus"><i class="fa-solid fa-circle-check"></i> 正在開庭中</div>
+                        <p><strong>案號：</strong> <span id="resCase">113年偵字第1234號</span></p>
+                        <p><strong>開庭別：</strong> 偵查庭</p>
+                        <p><strong>偵查庭位置：</strong> 第三偵查庭</p>
+                        <p><strong>預定開庭時間：</strong> 14:30</p>
+                        <p><strong>實際開庭時間：</strong> 14:35</p>
+                        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;"><i class="fa-solid fa-info-circle"></i> 資料更新時間：<span id="updateTime"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Taiwan Taidao District Prosecutors Office. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('queryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const year = document.getElementById('year').value;
+            const word = document.getElementById('word').value;
+            const number = document.getElementById('number').value;
+            const sequence = document.getElementById('sequence').value;
+            
+            const resultArea = document.getElementById('resultArea');
+            resultArea.style.display = 'block';
+            
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('zh-TW', { hour12: false });
+            
+            if (year === '115' && word === '他' && number === '11505001') {
+                resultArea.innerHTML = `
+                    <h3 style="margin-bottom: 20px; color: var(--primary-dark);">查詢結果</h3>
+                    <div class="result-card">
+                        <div class="status-badge" style="background-color: #e2e3e5; color: #383d41;" id="resultStatus"><i class="fa-solid fa-gavel"></i> 偵查庭結束，等待檢察官作出裁定</div>
+                        <p><strong>案號：</strong> 115年度他字第11505001號 (廉股)</p>
+                        <p><strong>被傳人身分：</strong> 被告 (顧雍冰)</p>
+                        <p><strong>開庭別：</strong> 偵查庭</p>
+                        <p><strong>偵查庭位置：</strong> 第一偵查庭/詢問室</p>
+                        <p><strong>預定開庭時間：</strong> 20:00</p>
+                        <p><strong>實際開庭時間：</strong> 20:05</p>
+                        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;"><i class="fa-solid fa-info-circle"></i> 資料更新時間：<span>${timeString}</span></p>
+                    </div>
+                `;
+            } else {
+                resultArea.innerHTML = `
+                    <h3 style="margin-bottom: 20px; color: var(--primary-dark);">查詢結果</h3>
+                    <div class="result-card">
+                        <div class="status-badge" id="resultStatus"></div>
+                        <p><strong>案號：</strong> <span>${year}年${word}字第${number}號</span></p>
+                        <p><strong>開庭別：</strong> 偵查庭</p>
+                        <p><strong>偵查庭位置：</strong> 第三偵查庭</p>
+                        <p><strong>預定開庭時間：</strong> 14:30</p>
+                        <p><strong>實際開庭時間：</strong> 14:35</p>
+                        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.9rem;"><i class="fa-solid fa-info-circle"></i> 資料更新時間：<span>${timeString}</span></p>
+                    </div>
+                `;
+                const badge = document.getElementById('resultStatus');
+                if (Math.random() > 0.5) {
+                    badge.className = 'status-badge status-active';
+                    badge.innerHTML = '<i class="fa-solid fa-circle-check"></i> 正在開庭中';
+                } else {
+                    badge.className = 'status-badge status-waiting';
+                    badge.innerHTML = '<i class="fa-solid fa-clock"></i> 尚未開庭（請稍候）';
+                }
+            }
+            
+            resultArea.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
